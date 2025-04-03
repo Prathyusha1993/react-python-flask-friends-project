@@ -60,7 +60,7 @@ def delete_friend(id):
 def update_friend(id):
     try:
         friend = Friend.query.get(id)
-        if friend in None:
+        if friend is None:
             return jsonify({ 'error': 'Friend not found'}), 404
         
         data = request.json
