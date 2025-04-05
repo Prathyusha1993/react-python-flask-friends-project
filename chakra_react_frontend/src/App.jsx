@@ -3,12 +3,14 @@ import { Container, Stack, Text } from '@chakra-ui/react'
 import Navbar from './components/Navbar'
 import UserGrid from './components/UserGrid'
 
+export const BASE_URL = 'http://127.0.0.1:5000/'
+
 function App() {
-  const [count, setCount] = useState(0)
+  const [users, setUsers] = useState([])
 
   return (
     <Stack minH={'100vh'}>
-      <Navbar />
+      <Navbar setUsers={setUsers}/>
       <Container maxW={'1200px'} my={4}>
         <Text 
         fontWeight={'bold'}
@@ -25,7 +27,7 @@ function App() {
             My Besties
           </Text>
         </Text>
-        <UserGrid />
+        <UserGrid users={users} setUsers={setUsers} BASE_URL={BASE_URL}/>
       </Container>
     </Stack>
   )
